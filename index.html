@@ -5,13 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='styles/main.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='scripts/app.js' defer></script>
     <title>Sleepy Bored Teenager</title>
 </head>
 <body>
     
+    <div class='heading'>
+        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjqcuUQQ2Rb45GkmjrUoYNrUz109K7dc8uUg&usqp=CAU'>
+        <h1>Sleepy Bored Teenager</h1>
+    </div>
+
+
+    <div class='dashboard'>
+        <ul>
+            <li id='sleepiness'> Sleepiness: 0</li>
+            <li id='boredom'>Boredom: 100</li>
+            <li id='coffee'>Coffee: 1</li>
+        </ul>
+    </div>
+
     
 
+    <button id='test'>Testy</button>
+
+
+    <div id='rpsGame' class='rpsGame-hidden'>
+        <div class='rpsHeader'>
+            <h1>Rock Paper Scissors</h1>
+            <h4>Choose Wisely</h4>
+        </div>
+        <div class='rpsButtons'>
+            <button id='rock'>Rock</button>
+            <button id='paper'>Paper</button>
+            <button id='scissors'>Scissors</button>
+        </div>
+    </div> 
 
 
 </body>
