@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,900&display=swap" rel="stylesheet"> 
     <link rel='stylesheet' href='styles/main.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='scripts/app.js' defer></script>
@@ -12,37 +15,52 @@
 <body>
     
     <div class='heading'>
-        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjqcuUQQ2Rb45GkmjrUoYNrUz109K7dc8uUg&usqp=CAU'>
-        <h1>Sleepy Bored Teenager</h1>
+        
+        <h1 class='title'>bored <br> /bôrd/</h1>
     </div>
+
+    <nav>
+        <h2 class='title'>bored</h2>
+        <button id='randomColor'>Random?</button>
+    </nav>
 
 
     <div class='dashboard'>
-        <ul>
-            <li id='sleepiness'> Sleepiness: 0</li>
-            <li id='boredom'>Boredom: 100</li>
-            <li id='coffee'>Coffee: 1</li>
-        </ul>
+        
     </div>
 
     
 
-    <button id='rpsBtn'>Rock Paper Scissors</button>
+    <button id='rpsBtn'>🗿 📃 ✂️</button>
 
-    <button id='test2'>Testy 2</button>
+    <button id='sketchBtn'>Sketch</button>
 
-
+    <!-- This is where the Rock Paper Scissors game HTML Begins -->
     <div id='rpsGame' class='rpsGame-hidden'>
         <div class='rpsHeader'>
             <h1>Rock Paper Scissors</h1>
             <h4>Choose Wisely</h4>
         </div>
         <div class='rpsButtons'>
-            <button id='rock'>Rock</button>
-            <button id='paper'>Paper</button>
-            <button id='scissors'>Scissors</button>
+            <button id='rock'>🗿</button>
+            <button id='paper'>📃 </button>
+            <button id='scissors'>✂️</button>
         </div>
     </div> 
+
+
+    <!-- This is where the Sketch game HTML Begins -->
+
+
+    <div id='sketchGame'>
+        <div class='sketchHeader'>
+            <h1>Sketch</h1>
+            <button>Random?</button>
+        </div>
+        <div id='container'>
+
+        </div>
+    </div>
 
 
 </body>

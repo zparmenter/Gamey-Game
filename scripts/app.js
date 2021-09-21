@@ -2,13 +2,23 @@ console.log('sanity');
 
 
 const teenager = {
-    name: 'Zach',//window.prompt(`what is your name?`),
+    name: 'namey name', //window.prompt(`what is your name?`),
     sleepiness: 0,
     boredom: 100,
     coffee: 1
 }
 
 console.log(teenager);
+
+let $freshDash = $(`
+    <ul>
+        <li id='name'>Name: ${teenager.name}</li>
+        <li id='sleepiness'>Sleepiness: ${teenager.sleepiness}</li>
+        <li id='boredom'>Boredom: ${teenager.boredom}</li>
+        <li id='coffee'>Coffee: ${teenager.coffee}</li>
+    </ul>
+`)
+$('.dashboard').append($freshDash);
 
 
 
@@ -17,14 +27,27 @@ console.log(teenager);
 
 
 
-document.getElementById('rpsBtn').addEventListener('click', function() {
-    
-
-
+let rpsLoader = document.getElementById('rpsBtn').addEventListener('click', function() {
     $('#rpsGame').toggle(600);
     $('.rpsResult').remove();
 
 });
+
+let sketchLoader = document.getElementById('sketchBtn').addEventListener('click', function() {
+    $('#sketchGame').toggle(600, function() {
+
+        $('.grid-items').remove();
+    });
+    
+
+});
+
+let randoColor = document.getElementById('randomColor').addEventListener('click', function() {
+    
+    $('body').css( 'background-color',  `rgb(${randomColor(0, 255)}, ${randomColor(0, 255)}, ${randomColor(0, 255)})`);
+});
+
+
 
 
 
@@ -34,24 +57,60 @@ document.getElementById('rpsBtn').addEventListener('click', function() {
 /*---------------functions------------------*/
 
 function boredomLessener() {
-    teenager.boredom = teenager.boredom - 20;
 
-    let dashSleepiness = document.getElementById('sleepiness');
-    dashSleepiness.textContent = `Sleepiness: ${teenager.sleepiness}`;
+    
+
+    if(teenager.boredom - 20 <= 0) {
+        alert(`You win! Way to not be bored.`);
+    } else {
+        teenager.boredom = teenager.boredom - 20;
+    }
 
     let dashBoredom = document.getElementById('boredom');
     dashBoredom.textContent = `Boredom: ${teenager.boredom}`;
 
+    
+
+} 
+
+function getSleepy() {
+
+    if((teenager.sleepiness + 30) < 100) {
+        teenager.sleepiness = teenager.sleepiness + 30;
+    } else if((teenager.sleepiness + 30) > 100 && teenager.coffee >= 1) {
+        teenager.coffee = teenager.coffee - 1;
+        showResult(`Coffee saved you this time. You won't be so lucky next time`);
+    } else {
+        alert(`You have lost ${teenager.name}. Better luck next time`);
+        location.reload();
+    }
+
+    let dashSleepiness = document.getElementById('sleepiness');
+    dashSleepiness.textContent = `Sleepiness: ${teenager.sleepiness}`;
+
     let dashCoffee = document.getElementById('coffee');
     dashCoffee.textContent = `Coffee: ${teenager.coffee}`;
 
+}
+
+function randomColor(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return (Math.floor(Math.random() * (max - min + 1) + min));
 } 
+
+
 
 
 //this hides the RPS game instead of having it displayed on the screen to start
 $('document').ready(function() {
     $('#rpsGame').hide();
+    $('#sketchGame').hide();
 })
+
+
+
+
 
 
 
@@ -99,13 +158,11 @@ let pchoice3 = document.getElementById('scissors').addEventListener('click', fun
     choiceComparison();
 })
 
-computer.currentChoice = choices[0];
-// choiceComparison();
 
 //this function compares the random computerChoice() to the players chosen choice and spits out who won!
 function choiceComparison() {
 
-    //computerChoice();
+    computerChoice();
 
     if(computer.currentChoice === player.currentChoice) {
 
@@ -115,18 +172,23 @@ function choiceComparison() {
             boredomLessener();
             showResult(`You win. ${choices[1]} beats ${choices[0]}`);
         } else {
+            getSleepy();
             showResult(`You lose. ${choices[2]} does not beat ${choices[0]}`);
         }
     } else if(computer.currentChoice === choices[1]) {
         if(player.currentChoice === choices[2]) {
+            boredomLessener();
             showResult(`You win. ${choices[2]} beats ${choices[1]}`);
         } else {
+            getSleepy();
             showResult(`You lose. ${choices[0]} does not beat ${choices[1]}`);
         }
     } else if(computer.currentChoice === choices[2]) {
         if(player.currentChoice === choices[0]) {
+            boredomLessener();
             showResult(`You win. ${choices[0]} beats ${choices[2]}`);
         } else {
+            getSleepy();
             showResult(`You lose. ${choices[1]} does not beat ${choices[2]}`);
         }
     }
@@ -151,8 +213,35 @@ function showResult(result) {
 
 
 
+/*------------------------------------------------------------THIS IS THE SKETCH GAME------------------------------------------------------------------*/
+
+const container = document.getElementById("container");
+
+
+
+function makeRows(num) {
+    container.setAttribute('class', 'madeAlready')
+    container.style.setProperty('--grid-rows', num);
+    container.style.setProperty('--grid-cols', num);
+    for (c = 0; c < (num * num); c++) {
+        var cell = document.createElement("div");
+        cell.textContent = '.';
+        container.appendChild(cell).id = "grid-item" + c;
+        let test = document.getElementById('grid-item' + c);
+        test.addEventListener('mouseover', function() {
+            test.className = 'grid-items';
+        });
+}
+};
+
+
+makeRows(64);
 
 
 
 
 
+
+
+
+/*----------------------------------------------------------THIS IS THE END OF SKETCH GAME--------------------------------------------------------------*/
