@@ -10,32 +10,32 @@ const teenager = {
 
 console.log(teenager);
 
-document.getElementById('test').addEventListener('click', function() {
+
+
+/*-----------------event listeners---------------*/
+
+
+
+
+document.getElementById('rpsBtn').addEventListener('click', function() {
     
 
-        
 
-        $('#rpsGame').toggle(1000);
-        $('.rpsResult').remove();
+    $('#rpsGame').toggle(600);
+    $('.rpsResult').remove();
 
-        
-    
-    // boredomLessener();
-    // let dashSleepiness = document.getElementById('sleepiness');
-    // dashSleepiness.textContent = `Sleepiness: ${teenager.sleepiness}`;
-
-    // let dashBoredom = document.getElementById('boredom');
-    // dashBoredom.textContent = `Boredom: ${teenager.boredom}`;
-
-    // let dashCoffee = document.getElementById('coffee');
-    // dashCoffee.textContent = `Coffee: ${teenager.coffee}`;
 });
+
+
+
+
+
+
+/*---------------functions------------------*/
 
 function boredomLessener() {
     teenager.boredom = teenager.boredom - 20;
-    teenager.sleepiness = teenager.sleepiness + 20;
 
-    
     let dashSleepiness = document.getElementById('sleepiness');
     dashSleepiness.textContent = `Sleepiness: ${teenager.sleepiness}`;
 
@@ -45,9 +45,13 @@ function boredomLessener() {
     let dashCoffee = document.getElementById('coffee');
     dashCoffee.textContent = `Coffee: ${teenager.coffee}`;
 
-
-
 } 
+
+
+//this hides the RPS game instead of having it displayed on the screen to start
+$('document').ready(function() {
+    $('#rpsGame').hide();
+})
 
 
 
@@ -57,8 +61,6 @@ function boredomLessener() {
 
 
 //This is the rock paper scissors game
-let rpsToggle = document.getElementById('rpsGame')
-
 //these are the two objects, the user is the player and the computer is the computer
 const player = {
     currentChoice: null
@@ -140,6 +142,11 @@ function showResult(result) {
 
 
 
+
+
+
+
+/*----------------------------------------------------------------THIS IS THE END OF ROCK PAPER SCISSORS-----------------------------------------------------------------*/
 
 
 
