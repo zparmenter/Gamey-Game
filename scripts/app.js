@@ -69,7 +69,13 @@ let sketchLoader = document.getElementById('sketchBtn').addEventListener('click'
     $('#sketchGame').toggle(600, function() {
         $('.grid-items').remove();
     });
+    $('.rpsResult').remove();
 });
+
+let millionareLoader = document.getElementById('millionareBtn').addEventListener('click', function() {
+    $('#millionareGame').toggle(600);
+    $('.rpsResult').remove();
+})
 
 
 
@@ -156,6 +162,7 @@ function blackSwan() {
 $('document').ready(function() {
     $('#rpsGame').hide();
     $('#sketchGame').hide();
+    $('#millionareGame').hide();
 })
 
 
@@ -242,7 +249,7 @@ function showResult(result) {
     let newResult = document.createElement('p');
     newResult.setAttribute('class', 'rpsResult');
     newResult.textContent = result;
-    document.body.append(newResult);
+    document.getElementById('resultShower').append(newResult);
 }
 
 
@@ -288,3 +295,43 @@ makeRows(64);
 
 
 /*----------------------------------------------------------THIS IS THE END OF SKETCH GAME--------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------THIS IS THE START OF MILLIONARE GAME---------------------------------------------------------------*/
+
+let total = document.getElementById('futureValue').addEventListener('click', function() {
+
+    
+    showFutureValue();
+
+})
+
+
+
+function showFutureValue() {
+    let presentValue = $('#presentValue').val(); 
+    let r = ($('#annualInterest').val() / 100);
+    let t = $('#numOfYears').val();
+    let PMT = ($('#monthlyInvestment').val());
+
+    let futureValue = (presentValue * (1 + r/12)**(t*12));
+    let fvWithDepo = futureValue + PMT * (((1 + r/12)**(t*12) -1) / (r/12))
+    let pubView = fvWithDepo.toFixed(2).toLocaleString();
+
+    if(fvWithDepo < 1000000) {
+        getSleepy();
+        showResult(`Anything less than a million dollars is extremely boring...Don't fall asleep.`);
+        showResult(new Intl.NumberFormat().format(pubView));
+    } else {
+        showResult(`#compounding`);
+        showResult(new Intl.NumberFormat().format(pubView));
+    }
+    
+    
+}
+
+/*------------------------------------------------------THIS IS THE END OF MILLIONARE GAME-----------------------------------------------------------------*/
+
+
+
+
