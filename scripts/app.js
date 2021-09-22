@@ -22,10 +22,42 @@ $('.dashboard').append($freshDash);
 
 
 
+
+
 /*-----------------event listeners---------------*/
 
+// const activeGame = {
+//     game: null,
+// }
 
 
+// function handleClick(e) {
+    
+//     const gameId = e.target.dataset.target;
+//     console.log(`#${gameId}`);
+//     $(`#${gameId}`).toggle();
+
+//     if($(`#${gameId}`) === $('#rpsGame') && $(`#${gameId}`).hasClass('rpsResult')) {
+//         return $('rpsResult').empty();
+//     }
+
+
+//     return $('.grid-items').remove();
+    
+    
+//     console.log($(`#${gameId}`))
+//     console.log($(`#${gameId}`).hasClass('rpsResult')); //hide = false;
+//     if(!$(`#${gameId}`).hasClass('rpsResult')) {
+//         return $('.rpsResult').empty();
+//     } 
+    
+    
+    
+// }
+
+// let rpsLoader = document.getElementById('rpsBtn').addEventListener('click', handleClick);
+
+// let sketchLoader = document.getElementById('sketchBtn').addEventListener('click', handleClick);
 
 let rpsLoader = document.getElementById('rpsBtn').addEventListener('click', function() {
     $('#rpsGame').toggle(600);
@@ -42,9 +74,16 @@ let sketchLoader = document.getElementById('sketchBtn').addEventListener('click'
 
 });
 
-let randoColor = document.getElementById('randomColor').addEventListener('click', function() {
+
+
+let randoColorBody = document.getElementById('randomColor').addEventListener('click', function() {
     
     $('body').css( 'background-color',  `rgb(${randomColor(0, 255)}, ${randomColor(0, 255)}, ${randomColor(0, 255)})`);
+});
+
+let randoEvent = document.getElementById('randomEvent').addEventListener('click', function() {
+    blackSwan();
+    
 });
 
 
@@ -58,18 +97,15 @@ let randoColor = document.getElementById('randomColor').addEventListener('click'
 
 function boredomLessener() {
 
-    
-
     if(teenager.boredom - 20 <= 0) {
         alert(`You win! Way to not be bored.`);
+        location.reload();
     } else {
         teenager.boredom = teenager.boredom - 20;
     }
 
     let dashBoredom = document.getElementById('boredom');
     dashBoredom.textContent = `Boredom: ${teenager.boredom}`;
-
-    
 
 } 
 
@@ -99,21 +135,31 @@ function randomColor(min, max) {
     return (Math.floor(Math.random() * (max - min + 1) + min));
 } 
 
+function randomSketchColor() {
+    $('#container').css( 'background-color',  `rgb(${randomColor(0, 255)}, ${randomColor(0, 255)}, ${randomColor(0, 255)})`);
+}
+
+function blackSwan() {
+    let events = [`getSleepy()`, `boredomLessener()`, `randomSketchColor()`];
+    let eventIndex = Math.round(Math.random() * events.length);
+
+    if(events[eventIndex] === events[0]) {
+        getSleepy();
+    } else if (events[eventIndex] === events[1]) {
+        boredomLessener();
+    } else {
+        randomSketchColor();
+    }
+
+    
+}
 
 
-
-//this hides the RPS game instead of having it displayed on the screen to start
+/*-------------------------------THIS HIDES THE GAMES IN THE DASH---------------------------------------*/
 $('document').ready(function() {
     $('#rpsGame').hide();
     $('#sketchGame').hide();
 })
-
-
-
-
-
-
-
 
 
 /*-------------------------------------------------------THIS IS ALL OF THE ROCK PAPER SCISSORS FUNCTIONALITY-----------------------------------------------------*/

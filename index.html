@@ -10,7 +10,7 @@
     <link rel='stylesheet' href='styles/main.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='scripts/app.js' defer></script>
-    <title>Sleepy Bored Teenager</title>
+    <title>bored</title>
     <link rel='shortcut icon' type='image/png' href='images/b.png'/>
 </head>
 <body>
@@ -32,9 +32,9 @@
 
     
 
-    <button id='rpsBtn'>🗿 📃 ✂️</button>
+    <button id='rpsBtn' data-target='rpsGame'>🗿 📃 ✂️</button>
 
-    <button id='sketchBtn'>Sketch</button>
+    <button id='sketchBtn' data-target='sketchGame'>Sketch</button>
 
     <!-- This is where the Rock Paper Scissors game HTML Begins -->
     <div id='rpsGame' class='rpsGame-hidden'>
@@ -56,7 +56,7 @@
     <div id='sketchGame'>
         <div class='sketchHeader'>
             <h1>Sketch</h1>
-            <button>Random?</button>
+            <button id='randomEvent'>Random?</button>
         </div>
         <div id='container'>
 
