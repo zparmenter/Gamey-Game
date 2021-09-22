@@ -67,11 +67,8 @@ let rpsLoader = document.getElementById('rpsBtn').addEventListener('click', func
 
 let sketchLoader = document.getElementById('sketchBtn').addEventListener('click', function() {
     $('#sketchGame').toggle(600, function() {
-
         $('.grid-items').remove();
     });
-    
-
 });
 
 
@@ -155,7 +152,7 @@ function blackSwan() {
 }
 
 
-/*-------------------------------THIS HIDES THE GAMES IN THE DASH---------------------------------------*/
+/*---------------------------------------------------------------THIS HIDES THE GAMES IN THE DASH-----------------------------------------------------------------*/
 $('document').ready(function() {
     $('#rpsGame').hide();
     $('#sketchGame').hide();
@@ -259,7 +256,7 @@ function showResult(result) {
 
 
 
-/*------------------------------------------------------------THIS IS THE SKETCH GAME------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------THIS IS THE SKETCH GAME------------------------------------------------------------------------*/
 
 const container = document.getElementById("container");
 
