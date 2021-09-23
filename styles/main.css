@@ -36,6 +36,22 @@ nav {
     display: flex;
 }
 
+.dashboard {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    
+}
+
+li {
+
+    list-style-type: none;
+}
+
 #rpsBtn {
     border-radius: 1px;
     height: 85px;
