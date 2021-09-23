@@ -293,11 +293,11 @@ function makeRows(num) {
         test.addEventListener('mouseover', function() {
             test.className = 'grid-items';
         });
-}
+    }
 };
 
 
-makeRows(64);
+makeRows(45);
 
 
 

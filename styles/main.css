@@ -81,9 +81,6 @@ li {
     
 }
 
-#randomEvent {
-    margin-bottom: 20px;
-}
 
 .randomButton {
     background-color: red;
@@ -138,49 +135,68 @@ li {
 }
 
 
+/* this is the sketch game CSS */
+
+.sketchLogo {
+    text-align: center;
+    color: gold;
+    font-family: 'Cedarville Cursive', cursive;
+    font-size: 50px;
+}
 
 
+#container {
+    text-align: center;
+    background-color: whitesmoke;
+    color: whitesmoke;
+    display: grid;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    border: 100px solid red;
+    border-radius: 10px;
+    margin-top: -165px;
+    margin-bottom: -115px;
+
+}
+
+.sketchControllers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sketchKnob {
+    padding: 50px;
+    border-radius: 100%;
+}
+
+
+
+.grid-items {
+    color: yellow;
+    background-color: grey;
     
+}
 
-    #reset:hover {
-        background-color: blue;
-    }
-    
-    #container {
-        text-align: center;
-        background-color: whitesmoke;
-        color: whitesmoke;
-        display: grid;
-        grid-template-rows: repeat(var(--grid-rows), 1fr);
-        grid-template-columns: repeat(var(--grid-cols), 1fr);
-        border: 10px solid black;
-    
-    }
-
-    
-    
-    .grid-items {
-        background-color: red;
-        
-    }
-
-    .sketchHeader {
-        text-align: center;
-    }
+.sketchHeader {
+    text-align: center;
+}
 
 
-    #millionareGame {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 
 
-    #millionareGame form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+/* This is the millionare game CSS */
+#millionareGame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#millionareGame form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 
 
