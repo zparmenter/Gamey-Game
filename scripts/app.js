@@ -1,4 +1,4 @@
-console.log('sanity');
+
 
 
 const teenager = {
@@ -7,8 +7,6 @@ const teenager = {
     boredom: 100,
     coffee: 1
 }
-
-console.log(teenager);
 
 let $freshDash = $(`
     <ul>
@@ -26,56 +24,70 @@ $('.dashboard').append($freshDash);
 
 /*-----------------event listeners---------------*/
 
-// const activeGame = {
-//     game: null,
-// }
+const activeGame = {
+    game: null,
+    id: null,
+}
 
 
-// function handleClick(e) {
+//when mouse pressed. if game is null, make it active and assing gameId as the id. if 
+
+function handleClick(e) {
     
-//     const gameId = e.target.dataset.target;
-//     console.log(`#${gameId}`);
-//     $(`#${gameId}`).toggle();
+    const gameId = e.target.dataset.target;
+    if(activeGame.game === null) {
+        $(`#${gameId}`).show(600);
+        activeGame.game = true;
+        activeGame.id = `#${gameId}`
+        // console.log(activeGame.game);
+        // console.log(activeGame.id);
+        return;
+    } else if (activeGame.game === true && activeGame.id === '#sketchGame') {
+        $('#sketchGame').hide(600, function() {
+            $('.grid-items').remove();
+        });
+        $('rpsResult').remove();
+        activeGame.game = null;
+        activeGame.id = null;
+        // console.log(activeGame.game);
+        // console.log(activeGame.id);
+        return;
+    } else if (activeGame.game === true && activeGame.id !== $(`#${gameId}`)) {
+        $(`${activeGame.id}`).hide(600);
+        $('.rpsResult').remove();
+        activeGame.game = null;
+        activeGame.id = null;
+        return; 
+        // $(`#${gameId}`).show(600);
+    } 
 
-//     if($(`#${gameId}`) === $('#rpsGame') && $(`#${gameId}`).hasClass('rpsResult')) {
-//         return $('rpsResult').empty();
-//     }
-
-
-//     return $('.grid-items').remove();
     
     
-//     console.log($(`#${gameId}`))
-//     console.log($(`#${gameId}`).hasClass('rpsResult')); //hide = false;
-//     if(!$(`#${gameId}`).hasClass('rpsResult')) {
-//         return $('.rpsResult').empty();
-//     } 
-    
-    
-    
-// }
+}
 
-// let rpsLoader = document.getElementById('rpsBtn').addEventListener('click', handleClick);
+let rpsLoader = document.getElementById('rpsBtn').addEventListener('click', handleClick);
 
-// let sketchLoader = document.getElementById('sketchBtn').addEventListener('click', handleClick);
+let sketchLoader = document.getElementById('sketchBtn').addEventListener('click', handleClick);
 
-let rpsLoader = document.getElementById('rpsBtn').addEventListener('click', function() {
-    $('#rpsGame').toggle(600);
-    $('.rpsResult').remove();
+let millionareLoader = document.getElementById('millionareBtn').addEventListener('click', handleClick);
 
-});
+// let rpsLoader = document.getElementById('rpsBtn').addEventListener('click', function() {
+//     $('#rpsGame').toggle(600);
+//     $('.rpsResult').remove();
 
-let sketchLoader = document.getElementById('sketchBtn').addEventListener('click', function() {
-    $('#sketchGame').toggle(600, function() {
-        $('.grid-items').remove();
-    });
-    $('.rpsResult').remove();
-});
+// });
 
-let millionareLoader = document.getElementById('millionareBtn').addEventListener('click', function() {
-    $('#millionareGame').toggle(600);
-    $('.rpsResult').remove();
-})
+// let sketchLoader = document.getElementById('sketchBtn').addEventListener('click', function() {
+//     $('#sketchGame').toggle(600, function() {
+//         $('.grid-items').remove();
+//     });
+//     $('.rpsResult').remove();
+// });
+
+// let millionareLoader = document.getElementById('millionareBtn').addEventListener('click', function() {
+//     $('#millionareGame').toggle(600);
+//     $('.rpsResult').remove();
+// })
 
 
 
