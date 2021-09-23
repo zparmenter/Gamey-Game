@@ -63,6 +63,31 @@ nav {
     
 }
 
+#randomEvent {
+    margin-bottom: 20px;
+}
+
+.randomButton {
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 100%;
+    padding-top: 15px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    
+}
+
+.randomButton:hover {
+    padding-top: 20px;
+    padding-right: 25px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+}
+
+
 .heading {
     display: flex;
     justify-content: space-evenly;
@@ -75,6 +100,7 @@ nav {
     height: 400px;
     padding-bottom: 20px;
 }
+
 
 .rpsGame-hidden {
     display: none;
