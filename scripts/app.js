@@ -93,7 +93,7 @@ let millionareLoader = document.getElementById('millionareBtn').addEventListener
 
 let randoColorBody = document.getElementById('randomColor').addEventListener('click', function() {
     
-    $('body').css( 'background-color',  `rgb(${randomColor(0, 255)}, ${randomColor(0, 255)}, ${randomColor(0, 255)})`);
+    $('body, #millionareGame').css( 'background-color',  `rgb(${randomColor(0, 255)}, ${randomColor(0, 255)}, ${randomColor(0, 255)})`);
 });
 
 let randoEvent = document.getElementById('randomEvent').addEventListener('click', function() {
@@ -312,12 +312,21 @@ makeRows(45);
 /*---------------------------------------------------------THIS IS THE START OF MILLIONARE GAME---------------------------------------------------------------*/
 
 let total = document.getElementById('futureValue').addEventListener('click', function() {
-
     
+    // if($('.calcText') >= 0) {
+    //     console.log('im working');
+    //     // $('.calcText').remove();
+    // }
     showFutureValue();
-
 })
 
+
+function showCalculation(result) {
+    let calcResult = document.createElement('p');
+    calcResult.setAttribute('class', 'calcText');
+    calcResult.textContent = result;
+    document.getElementById('calcAnswer').append(calcResult);
+}
 
 
 function showFutureValue() {
@@ -330,13 +339,14 @@ function showFutureValue() {
     let fvWithDepo = futureValue + PMT * (((1 + r/12)**(t*12) -1) / (r/12))
     let pubView = fvWithDepo.toFixed(2).toLocaleString();
 
+    $('.calcText').remove();
+
     if(fvWithDepo < 1000000) {
         getSleepy();
-        showResult(`Anything less than a million dollars is extremely boring...Don't fall asleep.`);
-        showResult(new Intl.NumberFormat().format(pubView));
+        showCalculation(new Intl.NumberFormat().format(pubView));
     } else {
-        showResult(`#compounding`);
-        showResult(new Intl.NumberFormat().format(pubView));
+        // showResult(`#compounding`);
+        showCalculation(new Intl.NumberFormat().format(pubView));
     }
     
     
