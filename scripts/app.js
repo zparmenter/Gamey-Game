@@ -223,7 +223,7 @@ let pchoice3 = document.getElementById('scissors').addEventListener('click', fun
 
 //this function compares the random computerChoice() to the players chosen choice and spits out who won!
 function choiceComparison() {
-
+    $('.rpsResult').remove();
     computerChoice();
 
     if(computer.currentChoice === player.currentChoice) {
@@ -261,7 +261,7 @@ function showResult(result) {
     let newResult = document.createElement('p');
     newResult.setAttribute('class', 'rpsResult');
     newResult.textContent = result;
-    document.getElementById('resultShower').append(newResult);
+    document.getElementById('rpsGame').append(newResult);
 }
 
 
