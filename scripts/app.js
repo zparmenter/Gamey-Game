@@ -2,7 +2,7 @@
 
 
 const teenager = {
-    name: window.prompt(`what is your name?`),
+    name: '',
     sleepiness: 0,
     boredom: 100,
     coffee: 1
